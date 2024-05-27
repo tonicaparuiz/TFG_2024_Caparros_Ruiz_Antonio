@@ -6,7 +6,6 @@ import es.damdi.com.model.Juegos;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
@@ -32,7 +31,7 @@ public class LayoutPrincipalController {
     // Referencia al Main
     private Main main;
 
-    /**
+    /**--
      * Constructor
      * Llamamos al constructor mediante el metodo initialize
      */
@@ -64,13 +63,13 @@ public class LayoutPrincipalController {
                 (observable, oldValue, newValue) -> showJuegosDetails(newValue));
     }
 
-    private void showJuegosDetails(Juegos person) {
-        if (person != null) {
+    private void showJuegosDetails(Juegos  juegos) {
+        if (juegos != null) {
             // Lenamos las etiquetas con información del objeto juego.
-            tituloLabel.setText(person.getTitulo());
-            descripcionLabel.setText(person.getDescripcion());
-            resumenJuegoLabel.setText(person.getResumenJugado());
-            horasJugadasLabel.setText(Integer.toString(person.getHorasJugadas()));
+            tituloLabel.setText(juegos.getTitulo());
+            descripcionLabel.setText(juegos.getDescripcion());
+            resumenJuegoLabel.setText(juegos.getResumenJugado());
+            horasJugadasLabel.setText(Integer.toString(juegos.getHorasJugadas()));
 
         } else {
             tituloLabel.setText("");

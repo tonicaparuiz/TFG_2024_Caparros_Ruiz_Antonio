@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:latest
+    restart: always
+    container_name: mongodb-gameProgressTracker
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    volumes:
+      - ./data:/data/db/
+      - ./data/log:/var/log/mongodb/
+    ports:
+      - "27017:27017"
