@@ -111,7 +111,7 @@ public class LayoutEditarController {
         }
 
         if (horasJugadasField.getText() == null || horasJugadasField.getText().length() == 0) {
-            errorMessage += "Código postarl no valido\n";
+            errorMessage += "Horas jugadas no validas\n";
         } else {
             // try to parse the postal code into an int.
             try {

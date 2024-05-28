@@ -6,6 +6,7 @@ module GameProgressTracker_CaparrosRuizAntonio_ {
     requires flexjson;
     requires javafx.web;
     requires PDFViewerFX;
+    requires mongo.java.driver;
 
     opens es.damdi.com.view;
     opens es.damdi.com.model;

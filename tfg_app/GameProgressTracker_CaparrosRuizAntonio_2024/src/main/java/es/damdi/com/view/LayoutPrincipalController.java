@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 
@@ -27,6 +28,8 @@ public class LayoutPrincipalController {
     private Text horasJugadasLabel;
     @FXML
     private Text resumenJuegoLabel;
+    @FXML
+    private AnchorPane menuPane;
 
     // Referencia al Main
     private Main main;
@@ -44,7 +47,6 @@ public class LayoutPrincipalController {
      */
     @FXML
     private void initialize() {
-
         tituloLabel.wrappingWidthProperty().bind(juegosTable.widthProperty().subtract(10)); // Ancho de la tabla menos un pequeño margen
         horasJugadasLabel.wrappingWidthProperty().bind(juegosTable.widthProperty().subtract(10));
         descripcionLabel.wrappingWidthProperty().bind(juegosTable.widthProperty().subtract(10));
@@ -83,7 +85,7 @@ public class LayoutPrincipalController {
      * Método usado para borrar registros de la tabla
      */
     @FXML
-    private void deleteJuegos() {
+    public void deleteJuegos() {
         int selectedIndex = juegosTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             juegosTable.getItems().remove(selectedIndex);
@@ -103,7 +105,7 @@ public class LayoutPrincipalController {
      * Método que nos permitira añadir un registro
      */
     @FXML
-    private void newJuego() {
+    public void newJuego() {
         Juegos juegoEditar = new Juegos();
         boolean okClicked = main.mostrarLayoutEditar(juegoEditar);
         if (okClicked) {
@@ -115,7 +117,7 @@ public class LayoutPrincipalController {
      * Método que nos permitira editar un registro ya añadido
      */
     @FXML
-    private void editJuego() {
+    public void editJuego() {
         Juegos selectedPerson = juegosTable.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
             boolean okClicked = main.mostrarLayoutEditar(selectedPerson);
