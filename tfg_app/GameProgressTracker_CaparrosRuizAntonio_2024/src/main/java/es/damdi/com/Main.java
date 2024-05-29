@@ -1,9 +1,11 @@
 package es.damdi.com;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dansoftware.pdfdisplayer.PDFDisplayer;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import es.damdi.com.model.Juegos;
@@ -25,6 +27,11 @@ import javafx.stage.Stage;
 import org.bson.Document;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
+/**
+ * El tipo Principal.
+ *
+ * @author Antonio Caparros Ruiz
+ */
 public class Main extends Application {
 
     private Stage primaryStage;
@@ -85,7 +92,6 @@ public class Main extends Application {
      * Constructor
      */
     public Main() {
-        // Add some sample data
         // juegosData.add(new Juegos("Red Dead Redemption 2", "Red Dead Redemption 2 es un videojuego de acción-aventura de temática western ambientado en un entorno de mundo abierto y jugado desde una perspectiva en tercera persona (con posibilidad de primera persona e incluso eliminar el HUD), con componentes para un jugador y multijugador en línea.","He terminado todo el capitulo 1 entero, el capitulo 2 entero y he completado las misiones disponibles de pistoleros famosos hasta ahora. He empezado el capitulo 3. AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",20));
         // juegosData.add(new Juegos("Grand Thef Auto V", "GTA se trata de una serie de videojuegos de mundo abierto en el que los jugadores pueden controlar a un personaje en un ambiente urbano y realizar diversas actividades, como conducir vehículos, robar, luchar y realizar misiones.","He completado casi toda la historia. Tambien he realizado todas las misiones secundarias. Me queda la mision final.",60));
         // juegosData.add(new Juegos("The Witcher 3: Wild Hunt", "The Witcher 3: Wild Hunt es un juego de rol de acción con una perspectiva en tercera persona. Los jugadores controlan a Geralt de Rivia, un cazador de monstruos conocido como brujo. Geralt camina, corre, rueda y esquiva, y (por primera vez en la serie) salta, trepa y nada.","He terminado la parte inicial del juegos, conociendo a los personajes básicos y ya accediendo al mundo abierto completo",3));
@@ -94,7 +100,8 @@ public class Main extends Application {
 
     /**
      * Devolvemos una lista de juegos
-     * @return
+     *
+     * @return juegos data
      */
     public ObservableList<Juegos> getJuegosData() {
         return juegosData;
@@ -105,15 +112,12 @@ public class Main extends Application {
      */
     public void initLayoutPrincipal() {
         try {
-            // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/view/LayoutMenu.fxml"));
             rootLayout = (BorderPane) loader.load();
 
-            // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
 
-            // Give the controller access to the main app.
             LayoutMenuController controller = loader.getController();
             controller.setMain(this);
 
@@ -129,15 +133,12 @@ public class Main extends Application {
      */
     public void mostrarLayoutPrincipal() {
         try {
-            // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/view/LayoutPrincipal.fxml"));
             AnchorPane LayoutPrincipal = (AnchorPane) loader.load();
 
-            // Mostramos el layout principal
             rootLayout.setCenter(LayoutPrincipal);
 
-            // Damos acceso al controlador a la aplicación principal
             LayoutPrincipalController controller = loader.getController();
             controller.setMainApp(this);
         } catch (IOException e) {
@@ -154,10 +155,8 @@ public class Main extends Application {
             loader.setLocation(Main.class.getResource("/view/LayoutHTML.fxml"));
             AnchorPane layoutHTML = loader.load();
 
-            // Set the layout into the center of the root layout
             rootLayout.setCenter(layoutHTML);
 
-            // Give the controller access to the main app
             LayoutHTMLController controller = loader.getController();
             controller.setMainApp(this);
         } catch (IOException e) {
@@ -167,8 +166,9 @@ public class Main extends Application {
 
     /**
      * Método que nos permitira editar juegos que ya hayamos registrado
-     * @param juegos
-     * @return
+     *
+     * @param juegos de juegos
+     * @return boolean boolean
      */
     public boolean mostrarLayoutEditar(Juegos juegos) {
         try {
@@ -200,14 +200,17 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Guarde los datos de los juegos en mongo db.
+     */
     public void saveJuegosDataToMongoDB() {
         MongoDatabase database = mongoDBConnection.getDatabase();
         MongoCollection<Document> collection = database.getCollection("juegos");
 
-        // Eliminar todos los documentos en la colección
+        // Eliminamos todos los documentos en la colección
         collection.drop();
 
-        // Convertir la lista de Juegos a JuegosPOJO y luego a Documentos de MongoDB
+        // Convertimos la lista de Juegos a JuegosPOJO y luego a Documentos de MongoDB
         List<JuegosPOJO> juegosPOJOList = convertirListaJuegosAListaJuegosPOJO(juegosData);
         List<Document> documents = new ArrayList<>();
         for (JuegosPOJO juegosPOJO : juegosPOJOList) {
@@ -217,7 +220,7 @@ public class Main extends Application {
                     .append("horasJugadas", juegosPOJO.getHorasJugadas());
             documents.add(doc);
         }
-        collection.insertMany(documents);  // Insertar todos los documentos a la vez
+        collection.insertMany(documents);  // Insertamos todos los documentos a la vez
     }
 
     private List<JuegosPOJO> convertirListaJuegosAListaJuegosPOJO(ObservableList<Juegos> juegosData) {
@@ -234,13 +237,37 @@ public class Main extends Application {
     }
 
     /**
+     * Meodo para mostrar el manual de usuario
+     */
+    public void showAyudaPDF(){
+        try{
+            PDFDisplayer displayer = new PDFDisplayer();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("PDF Ayuda");
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(displayer.toNode());
+            dialogStage.setScene(scene);
+            dialogStage.show();
+            displayer.loadPDF(new URL(getClass().getResource("/PDF/manualUsuario.pdf").toString()));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Devolvemos el escenario principal
-     * @return
+     *
+     * @return primary stage
      */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
+    /**
+     * El punto de entrada de la aplicación.
+     *
+     * @param args los argumentos de entrada
+     */
     public static void main(String[] args) {
         launch(args);
     }

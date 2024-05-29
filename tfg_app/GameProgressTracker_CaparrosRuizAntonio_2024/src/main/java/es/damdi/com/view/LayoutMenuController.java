@@ -4,8 +4,19 @@ import es.damdi.com.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 
+/**
+ * El tipo de controlador de menú Diseño.
+ *
+ * @author Antonio Caparros Ruiz
+ */
 public class LayoutMenuController {
     private Main main;
+
+    /**
+     * Establece el main
+     *
+     * @param main el main
+     */
     public void setMain(Main main) {this.main = main; }
     /**
      * Controlador para manejar la acción de guardar
@@ -19,7 +30,7 @@ public class LayoutMenuController {
             mostrarMensajeError(e.getMessage());
         }    }
     /**
-     * Closes the application.
+     * Cierra la aplicacion
      */
     @FXML
     private void handleExit() {
@@ -36,6 +47,8 @@ public class LayoutMenuController {
     private void handleMostrarLayoutHTML() {
         main.mostrarLayoutHTML();
     }
+    @FXML
+    private void handlePDF(){ main.showAyudaPDF(); }
 
     private void mostrarMensajeDatosGuardados() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

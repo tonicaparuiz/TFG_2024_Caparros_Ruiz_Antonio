@@ -1,5 +1,8 @@
 package es.damdi.com;
 
+/**
+ * The type Launch main.
+ */
 public class LaunchMain {
     /**
      * Main.

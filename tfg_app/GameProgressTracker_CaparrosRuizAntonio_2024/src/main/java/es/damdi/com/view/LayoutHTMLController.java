@@ -5,6 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
+/**
+ * El tipo de controlador HTML de diseño.
+ *
+ * @author Antonio Caparros Ruiz
+ */
 public class LayoutHTMLController {
 
     @FXML
@@ -12,6 +17,11 @@ public class LayoutHTMLController {
 
     private Main mainApp;
 
+    /**
+     * Establece la clase main
+     *
+     * @param mainApp clase main
+     */
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
         // Load the HTML file

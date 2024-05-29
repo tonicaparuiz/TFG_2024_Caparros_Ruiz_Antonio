@@ -11,9 +11,9 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- * Dialog to edit details of a person.
+ * Dialog para editar y añadir juegos a la tabla
  *
- * @author Marco Jakob
+ * @author Antonio Caparros Ruiz
  */
 public class LayoutEditarController {
 
@@ -32,17 +32,17 @@ public class LayoutEditarController {
     private boolean okClicked = false;
 
     /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
+     * Inicializa la clase de controlador. Este método se llama automáticamente
+     * después de que se haya cargado el archivo fxml.
      */
     @FXML
     private void initialize() {
     }
 
     /**
-     * Sets the stage of this dialog.
+     * Establece el escenario de este diálogo.
      *
-     * @param dialogStage
+     * @param dialogStage el dialog stage
      */
     public void setDialogStage(Stage dialogStage) {
         // Cargar el icono
@@ -52,9 +52,9 @@ public class LayoutEditarController {
     }
 
     /**
-     * Sets the person to be edited in the dialog.
+     * Establece la persona que se va a editar en el cuadro de diálogo.
      *
-     * @param juegos
+     * @param juegos de juegos
      */
     public void setJuegos(Juegos juegos) {
         this.juegos = juegos;
@@ -66,16 +66,16 @@ public class LayoutEditarController {
     }
 
     /**
-     * Returns true if the user clicked OK, false otherwise.
+     * Devuelve verdadero si el usuario hizo clic en Aceptar, falso de lo contrario.
      *
-     * @return
+     * @return boolean boolean
      */
     public boolean isOkClicked() {
         return okClicked;
     }
 
     /**
-     * Called when the user clicks ok.
+     * Se llama cuando el usuario hace clic ok.
      */
     @FXML
     private void handleOk() {
@@ -91,7 +91,7 @@ public class LayoutEditarController {
     }
 
     /**
-     * Called when the user clicks cancel.
+     * Se llama cuando el usuario hace clic en cancelar.
      */
     @FXML
     private void handleCancel() {
@@ -99,9 +99,9 @@ public class LayoutEditarController {
     }
 
     /**
-     * Validates the user input in the text fields.
+     * Valida la entrada del usuario en los campos de texto.
      *
-     * @return true if the input is valid
+     * @return verdadero si la entrada es válida
      */
     private boolean isInputValid() {
         String errorMessage = "";
@@ -113,7 +113,6 @@ public class LayoutEditarController {
         if (horasJugadasField.getText() == null || horasJugadasField.getText().length() == 0) {
             errorMessage += "Horas jugadas no validas\n";
         } else {
-            // try to parse the postal code into an int.
             try {
                 Integer.parseInt(horasJugadasField.getText());
             } catch (NumberFormatException e) {
@@ -130,7 +129,6 @@ public class LayoutEditarController {
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            // Show the error message.
             Alert alert = new Alert(AlertType.ERROR);
             alert.initOwner(dialogStage);
             alert.setTitle("Campos invalidos");

@@ -23,7 +23,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Ayuda">
             <items>
-              <MenuItem mnemonicParsing="false" text="Manual de Uso" />
+              <MenuItem mnemonicParsing="false" onAction="#handlePDF" text="Manual de Uso" />
             </items>
           </Menu>
         </menus>

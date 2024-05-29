@@ -12,6 +12,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 
+/**
+ * El tipo Controlador principal de diseño.
+ *
+ * @author Antonio Caparros Ruiz
+ */
 public class LayoutPrincipalController {
     @FXML
     private TableView<Juegos> juegosTable;
@@ -34,7 +39,7 @@ public class LayoutPrincipalController {
     // Referencia al Main
     private Main main;
 
-    /**--
+    /**
      * Constructor
      * Llamamos al constructor mediante el metodo initialize
      */
@@ -90,7 +95,6 @@ public class LayoutPrincipalController {
         if (selectedIndex >= 0) {
             juegosTable.getItems().remove(selectedIndex);
         } else {
-            // Nothing selected.
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(main.getPrimaryStage());
             alert.setTitle("Sin selección");
@@ -126,7 +130,7 @@ public class LayoutPrincipalController {
             }
 
         } else {
-            // Nada seleccionado
+            // Error para cuando no seleccionamos nada
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(main.getPrimaryStage());
             alert.setTitle("Sin seleccion");
@@ -140,7 +144,7 @@ public class LayoutPrincipalController {
     /**
      * Llamamos a la aplicación principal para darse una referencia a sí misma.
      *
-     * @param main
+     * @param main the main
      */
     public void setMainApp(Main main) {
         this.main = main;
