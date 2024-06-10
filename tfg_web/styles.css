@@ -442,3 +442,13 @@ header nav a:hover {
 strike{
     font-size: 12px;
 }
+
+
+.texto-encima {
+    position: absolute;
+    top: 50%; /* Centra verticalmente el texto */
+    left: 50%; /* Centra horizontalmente el texto */
+    transform: translate(-50%, -50%); /* Centra perfectamente el texto */
+    font-size: 20px; /* Reducir el tamaño del texto para dispositivos móviles */
+}
+

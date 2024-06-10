@@ -4,7 +4,7 @@
   <groupId>es.damdi.com</groupId>
   <artifactId>GameProgressTracker_CaparrosRuizAntonio_2024</artifactId>
   <name>GameProgressTracker_CaparrosRuizAntonio_2024</name>
-  <version>1.0-RELEASE</version>
+  <version>1.0.0-RELEASE</version>
   <build>
     <plugins>
       <plugin>

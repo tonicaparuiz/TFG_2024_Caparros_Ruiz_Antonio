@@ -6,7 +6,7 @@
 
     <groupId>es.damdi.com</groupId>
     <artifactId>GameProgressTracker_CaparrosRuizAntonio_2024</artifactId>
-    <version>1.0-RELEASE</version>
+    <version>1.0.0-RELEASE</version>
     <name>GameProgressTracker_CaparrosRuizAntonio_2024</name>
 
     <properties>
@@ -56,9 +56,26 @@
             <version>3.3</version>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.13</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.6</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
             <version>3.12.14</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.github.Dansoftowner</groupId>
