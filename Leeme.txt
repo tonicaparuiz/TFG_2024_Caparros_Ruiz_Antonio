@@ -1,0 +1,7 @@
+Buenas! Soy Antonio Caparrós Ruiz. Os dejo aqui un Leeme.txt explicando el contenido de las carpetas que entrego.
+1.- tfg_web: Carpeta en la que se encuentra todo el contenido de la web
+2.- tfg_app: Carpeta en la que se encuentra todo el contenido de la app
+3.- imagenes: Carpeta en la que se encuentra todas las imagenes usadas en la documentacion
+4.- mongodb: Carpeta en la que se encuentra el docker compose para la creación del docker con el mongo
+5.- deploy: Carpeta en la que se encuentra el instalador y el exe de la aplicacion
+6.- documentacion: Carpeta en la que se encuentra todala documentación del proyecto

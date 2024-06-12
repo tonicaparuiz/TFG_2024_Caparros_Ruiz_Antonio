@@ -13,10 +13,9 @@ y acceder a su progreso en diferentes videojuegos desde su ordenador.
 ## 💻 Instalación
 ------------
 
-Ahora mismo el proyecto no esta terminado. Para instalarlo ahora tendrias que descargar todo el codigo, 
-configurar la parte de maven y ejecutar, teneiendo todas las versiones de java y maven actualizadas a la ultima.
+Para instalar la app solo tienes que descargar el instalador, el cual se encuentra en la página web oficial (https://gameprogresstracker.vercel.app)
 
-Cuando este terminado, la app se podra descargar a traves de su página web. Descargaras un instalador que te permitira instalarla.
+Para más información, en el apartado de documentación, tienes el manual de usuario con el apartado de descarga e instalación
 
 ## 🚀 Uso
 -----
@@ -51,8 +50,8 @@ Antonio Caparrós Ruiz - <a href="https://www.linkedin.com/in/antonio-caparros-r
 ----------------
 
 * [W3Schools](https://www.w3schools.com) - Usado para resolucion de dudas
-* [ChatGPT]() - Usado para resolucion de dudas
-* [COPILOT]() - Usado para creación de imagenes
+* [ChatGPT](https://chatgpt.com) - Usado para resolucion de dudas
+* [COPILOT](https://copilot.microsoft.com/) - Usado para creación de imagenes
 * [Canva](https://www.canva.com/) - Edicion de imágenes
 
 ¡Eso es todo! 🎉

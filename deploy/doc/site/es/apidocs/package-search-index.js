@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"es.damdi.com"},{"l":"es.damdi.com.model"},{"l":"es.damdi.com.view"}];updateSearchResults();
